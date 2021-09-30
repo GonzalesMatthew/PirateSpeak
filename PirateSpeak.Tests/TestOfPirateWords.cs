@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace PirateSpeak.Tests
@@ -13,7 +14,7 @@ namespace PirateSpeak.Tests
             var expectedResult = true;
             var translator = new PirateTranslator();
             //act
-            var actualResult = translator.Translate(wordToTranslate);
+            var actualResult = translator.ConfirmPirateSpeak(wordToTranslate);
             //assert
             Assert.Equal(expectedResult, actualResult);
         }
@@ -26,9 +27,22 @@ namespace PirateSpeak.Tests
             var expectedResult = true;
             var translator = new PirateTranslator();
             //act
-            var actualResult = translator.Translate(wordToTranslate);
+            var actualResult = translator.ConfirmPirateSpeak(wordToTranslate);
             //assert
             Assert.Equal(expectedResult, actualResult);
         }
+
+        //[Theory]
+        //[InlineData("ortsp", new List<string>{"sport", "ports"}]
+        //public void given_a_word_suggest_possible_pirate_words(string wordToTranslate, List<string> suggestedWords)
+        //{
+        //    //arrange
+        //    var translator = new PirateTranslator();
+        //    //act
+        //    var actualResult = translator.Translate(wordToTranslate);
+        //    //assert
+        //    Assert.Equal(suggestedWords, actualResult);
+        //}
+        
     }
 }
