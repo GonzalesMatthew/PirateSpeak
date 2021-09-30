@@ -8,7 +8,7 @@ namespace PirateSpeak
 {
     public class PirateTranslator
     {
-        public bool Translate(string wordToTranslate)
+        public bool ConfirmPirateSpeak(string wordToTranslate)
         {
             var pirateWords = new List<string>
             {
@@ -32,5 +32,25 @@ namespace PirateSpeak
             }
             return false;
         }
+
+        //public List<string> Translate(string wordToTranslate, List<string> possibleWords)
+        //{
+        //    char[] input = wordToTranslate.ToCharArray();
+        //    Array.Sort(input);
+        //    string sortedInput = new string(input);
+
+        //    List<string> suggestedWords = new List<string>();
+
+        //    foreach (string word in possibleWords)
+        //    {
+        //        char[] pirateWord = word.ToCharArray();
+        //        Array.Sort(pirateWord);
+        //        string sortedPiratedWord = new string(pirateWord);
+
+        //        if (sortedInput == sortedPiratedWord) suggestedWords.Add(word);
+        //    }
+
+        //    return suggestedWords.ToList().ForEach(Console.Write);
+        //}
     }
 }
