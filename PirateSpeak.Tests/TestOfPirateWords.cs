@@ -32,17 +32,33 @@ namespace PirateSpeak.Tests
             Assert.Equal(expectedResult, actualResult);
         }
 
+
+        [Fact]
+        public void given_a_word_suggest_possible_pirate_words()
+        {
+            //arrange
+            var wordToTranslate = "ortsp";
+            var expectedResult = new List<string> { "sport", "ports" };
+            var translator = new PirateTranslator();
+            //act
+            var actualResult = translator.Translate(wordToTranslate, expectedResult);
+            //assert
+            Assert.Equal(expectedResult, actualResult);
+        }
+
+
+
         //[Theory]
-        //[InlineData("ortsp", new List<string>{"sport", "ports"}]
-        //public void given_a_word_suggest_possible_pirate_words(string wordToTranslate, List<string> suggestedWords)
+        //[InlineData("ortsp", new List<string> { "sport", "ports" })]
+        //public void given_a_word_suggest_possible_pirate_words_theory(string wordToTranslate, List<string> suggestedWords)
         //{
         //    //arrange
         //    var translator = new PirateTranslator();
         //    //act
-        //    var actualResult = translator.Translate(wordToTranslate);
+        //    var actualResult = translator.Translate(wordToTranslate, suggestedWords);
         //    //assert
         //    Assert.Equal(suggestedWords, actualResult);
         //}
-        
+
     }
 }
