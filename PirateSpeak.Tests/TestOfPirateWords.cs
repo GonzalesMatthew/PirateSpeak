@@ -38,27 +38,33 @@ namespace PirateSpeak.Tests
         {
             //arrange
             var wordToTranslate = "ortsp";
+            var possibleWords = new List<string> { "sport", "ports", "parrot", "scurvy" };
             var expectedResult = new List<string> { "sport", "ports" };
             var translator = new PirateTranslator();
             //act
-            var actualResult = translator.Translate(wordToTranslate, expectedResult);
+            var actualResult = translator.Translate(wordToTranslate, possibleWords);
             //assert
             Assert.Equal(expectedResult, actualResult);
         }
 
 
+        public static IEnumerable<object[]> Data() {
+            yield return new object[] { "ortsp", new List<string> { "sport", "ports", "matey", "plank" }, new List<string> { "sport", "ports" } };
+            yield return new object[] { "lankp", new List<string> { "plank", "parrot" }, new List<string> { "plank" } };
+            yield return new object[] { "cusrvy", new List<string> { "scurvy", "rum", "argh" }, new List<string> { "scurvy" } };
+        }
 
-        //[Theory]
-        //[InlineData("ortsp", new List<string> { "sport", "ports" })]
-        //public void given_a_word_suggest_possible_pirate_words_theory(string wordToTranslate, List<string> suggestedWords)
-        //{
-        //    //arrange
-        //    var translator = new PirateTranslator();
-        //    //act
-        //    var actualResult = translator.Translate(wordToTranslate, suggestedWords);
-        //    //assert
-        //    Assert.Equal(suggestedWords, actualResult);
-        //}
+        [Theory]
+        [MemberData(nameof(Data))]
+        public void given_a_word_suggest_possible_pirate_words_theory(string wordToTranslate, List<string> possibleWords, List<string> suggestedWords)
+        {
+            //arrange
+            var translator = new PirateTranslator();
+            //act
+            var actualResult = translator.Translate(wordToTranslate, possibleWords);
+            //assert
+            Assert.Equal(suggestedWords, actualResult);
+        }
 
     }
 }
